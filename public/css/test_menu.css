@@ -1,0 +1,133 @@
+
+/* ___________________________________CSS для ф-ла test_menu.pug_______________________ */
+
+/*___________ Стили для МЕНЮ <nav>______ */
+
+.main {/*ВСЕ ЧТО прописано вbody НАСЛЕДУЕТСЯ ВСЕМИ ДОЧЕРНИМИ-Элементами*/      
+  font-family: Verdana, sans-serif, 'Times New Roman', Arial;
+  color: #fff;
+  background-color: #3c3c3c;
+  margin: 0;
+
+}
+
+.menu {
+  background-color: #6ac041;
+  color: rgb(64, 66, 199);
+}
+
+
+.h1 {
+  margin: 0;
+  font-size: 28px;
+  text-align: center;
+  border-bottom: solid 2px #5c5c5c;
+  padding: 15px 0 15px 0;
+}
+
+/* .menu {} */
+
+.menu-list {
+  /* Равняем блок <ul> - ПО ЦЕНТРУ */
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+/* .js-menu-button {}  - для test_menu.js*/
+
+.menu-list-element { /* Св-во будет применено - к элементу, имеющему class="menu-list-element" - стр. 42  */
+  padding: 15px 0 15px 0;
+  list-style: none;
+}
+
+/* Св-во будет применено - ТОЛЬКО к элементу, имеющему СРАЗУ 2 КЛАССА (menu-list-element И is-active)- стр. 40
+    <ul> 
+      <li class="menu-list-element is-active" ><a href="">...</a></li>
+
+      <li class="menu-list-element" ><a href="">...</a></li>
+  </ul>
+*/
+.menu-list-element.is-active {
+  background-color: #1c1c1c;
+} 
+
+.menu-list-element-a {
+  font-size: 24px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/*___________ Стили для КУБИКОВ <ul><li>...</li></ul>______ */
+
+.number-list {
+  display: flex;
+  flex-wrap: wrap;  /*Flex-элементы ПЕРЕНОСЯТСЯ, располагаясь в
+  несколько ГОРИЗОНТАЛЬНЫХ РЯДОВ (если не помещаются в один ряд)
+  в направлении слева направо (в rtl справа налево).*/
+  list-style: none;
+
+  /* Задаем размер блока <ul> - ПО ЦЕНТРУ */
+  width: 450px;
+  height: 450px;
+
+   /* Равняем блок <ul> - ПО ЦЕНТРУ страници*/
+   margin: auto;
+}
+
+.number-list-element {
+  /* делаем Квадратик 100х100 px */
+  width: 100px;
+  line-height: 100px;
+  border: solid 2px #5c5c5c;
+
+  text-align: center;  /* центруем значения "i" - внутри квадратика*/
+  
+}
+
+.mod-red {
+  background-color: red;
+}
+
+.mod-green {
+  background-color: green;
+}
+
+.mod-blue {
+  background-color: blue;
+}
+
+ /* ___________________________________CSS для ф-ла test.pug_______________________ */
+  
+ .myImg {
+  display: inline-block;
+  
+  margin-top: -13px;
+  margin-bottom: -20px;
+  margin-left: 15px;
+}
+
+.test{ color: blue;}
+.margin{margin-left: 40px;}
+
+.footnote {
+  text-decoration: none;
+  font-size: 20px;
+  color: green;
+}
+
+/* ______________  mixin news(title) _____________________________ */
+.news-wrap {
+  border: 2px solid forestgreen;
+  margin-bottom: 20px;
+}
+
+.news-title{
+  font-weight: bold;
+} 
+
+.news-text {
+  font-style:oblique;
+  font-weight: 100;
+} 
+      

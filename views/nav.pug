@@ -1,0 +1,29 @@
+div(class="site-nav button-primary")
+
+  div(class="close-button-div")
+    button(class="button-primary-outlined close-nav") X  <!-- Нажимая на кнопку "Х" - мы будем ЗАКРЫВАТЬ ВЕСЬ Блок div(class="site-nav button-primary") -->
+    
+  h3(class="cart-header") Навигация по сайту
+
+  div(id="category-list") <!-- Блок - куда будем размещать Меню НАВИГАЦИИ (nav.js) -->
+  
+    ul(class="category-list")
+      li
+        a(href="/") Главная Страница
+    //- Сюда из nav.js Выводим КАТЕГОРИИ ТОВАРА
+     <li><a href="/cat?id=1">Ноутбуки</a></li> 
+     <li><a href="/cat?id=2">Телефоны</a></li>
+
+  h3(class="cart-header") Корзина
+
+  div(id="cart-nav")  <!-- Внутрь помещаем ТАБЛИЦУ - куда будем размещать ДАННЫЕ О ТОВАРАХ, КОТОРЫЕ ПОПАЛИ В КОРЗИНУ (card.js; Ф-ция showCart(body))  -->
+
+    //- <table class="table table-striped table-cart">
+          <tbody>
+          ....
+          </tbody>
+        </table>
+        
+  div(class="text-right")
+    a(target="_blank" href="/order") 
+      button(class="button-primary-outlined") Оформить Заказ 

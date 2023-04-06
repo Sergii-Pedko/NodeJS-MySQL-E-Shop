@@ -1,0 +1,29 @@
+include header.pug
+
+div(class='wrap')
+  div(class='content')
+    header(class='site-header')
+      include site_header.pug
+
+    div(class='container')
+      //- Конструкция row->col Должна быть обвернута в обвертку с классом .container
+      div(class='row')
+        div(class='col col-md-12')
+          h2 #{cat[0]['category']} 
+          //-  Метод ПЕРЕБОРА МАССИВОВ (ОБЪЕКТОВ) each в PUG - аналогично перебору Объектов learn_by_heart.html стр. 1484-1523
+          //-      for (let key in obj) {
+          //-        console.log(key); 
+          //-      }; 
+
+          //-  elem, index - это переменные с которыми будем работать внутри перебора МАССИВ-Объектов - по Ключу goods -> из Объекта, переданного из app.js стр. 318 (Вывод Элементов Массива, в т.ч. Рисунков - см. help.pug стр.45-51) 
+        each elem, index in goods
+          include card.pug
+                  
+
+        div #{cat[0]['description']}
+
+    //- Cоздаем Блок - НАВИГАЦИИ
+    include nav.pug
+  //- Создаем ФУТЕР - в котором прописан скрипт (nav.js) ->
+   который вернет [ { id: 1, category: 'Ноутбуки' }, { id: 2, category: 'Телефоны' } ] из Таблици category 
+  include footer.pug

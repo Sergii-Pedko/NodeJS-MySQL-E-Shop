@@ -1,0 +1,27 @@
+//- _________ Пишем Меню и передаем весь файл (test_menu.pug) - include в test_index.pug - стр.21) __________
+
+nav.menu Это МЕНЮ - будет передано в test_menu.pug (как сверстаный блок) и в test_shablon.pug (как часть ШАБЛОНА) 
+  ul.menu-list.js-menu-button  <!-- Добавляем 2 Класса -->
+
+    -
+      let myMenu = [ 
+          {url: `https://www.npmjs.com/`, text: `Mенеджер Пакетов - NPM`},
+          {url: `https://www.npmjs.com/package/http-server`, text: `NPM http-Server`},
+          {url: `https://www.npmjs.com/package/csv-parser`, text: `NPM CSV-PARSER`},
+          {url: `https://www.npmjs.com/package/convert-csv-to-json`, text: `NPM convert-csv-to-json`},
+          {url: `https://www.npmjs.com/package/mysql`, text: `NPM - MySQL`}
+        ]; //-  Создаем МАССИВ-ОБЪЕКТОВ  - menu (test.pug стр. 78 - 87). НЕ ЗАБЫВАЕМ про ЧЕРТОЧКУ перед ПЕРЕМЕННОЙ - стр.6   (-let myMenu = [{}, {}, ....]; ) 
+
+    -let isPage = 0; //-  Создаем переменную равную "НУЛЮ - соответственно, сравнив ее со счетчиком массива (nidex =0; стр. 18) - имеем ПЕРВУЮ <li> - затемненную - стр.19 (class="menu-list-element is-active ")
+        
+    each elem, index in myMenu     
+      if isPage == index
+        li.menu-list-element.is-active 
+          a(target="_blank" class="menu-list-element-a" href=elem[`url`]) #{ elem[`text`] } <!--Выводим в Цикле ссылки по Ключу-url и Названия по Ключу-text; Обязательно Tub (пробел) - иначе ошибка: expected "indent", but got "newline"-->
+          p счетчик = #{index}  
+      else 
+       li.menu-list-element
+         a(target="_blank" class="menu-list-element-a" href=elem[`url`]) #{ elem[`text`] }
+         p счетчик = #{index}
+   
+//- Метод ПЕРЕБОРА МАССИВОВ (ОБЪЕКТОВ) each в PUG - аналогично перебору Объектов learn_by_heart.html стр. 1484-152.             for (let key in obj) { console.log(key); };

@@ -1,0 +1,21 @@
+//- Пропишем ШАБЛОН - который будем ПОДКЛЮЧАТЬ в test.pug (стр. 5-10) 
+
+//- ШАБЛОНОВ -можно прописать СКОЛЬКО УГОДНО - и ПОДКЛЮЧИТЬ ГДЕ УГОДНО (в любом файле)
+doctype html
+html(lang=`en`) <!-- html - Tub (ПРОБЕЛ) head;  ОЧЕНЬ ОСТОРОЖНО С ЛИШНИМИ ПРОБЕЛАМИ -->
+    head
+        meta(charset='utf-8')
+        meta(
+            name='viewport'
+            content='width=device-width, initial-scale=1.0'
+        )
+        link(
+            rel='stylesheet'
+            href='css/test_menu.css'
+        )
+        title
+            block title
+    body
+        include test_menu.pug
+        
+        block content

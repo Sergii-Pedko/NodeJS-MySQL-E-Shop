@@ -1,0 +1,34 @@
+//- Вывод Элементов Массива, в т.ч. Рисунков - см. help.pug стр.45-51
+
+include header.pug
+
+div(class='wrap')
+  div(class='content')
+    header(class='site-header')
+      include site_header.pug
+
+    div(class='container')
+      //- Конструкция row->col Должна быть обвернута в обвертку с классом .container
+      div(class='row')
+        div(class='col col-md-12')
+            h2(class="panel-title") #{goods[0]['name']}
+        div(class="col col-md-4")
+            img(
+                src=`images/${goods[0]['image']}`
+          
+                class="goods-big-image"
+            )
+        div(class="col col-md-8")
+            p #{goods[0]['description']}
+            span(class="success") Цена: #{goods[0]['cost'].toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ')} грн.
+            //- cтр.23 - преобразует Число в таблице goods: 6999 -> 6 199.00 
+            button(
+                class="button-success add-to-cart"
+                data-goods_id=goods[0]['id']
+            ) в Корзину
+    //- Cоздаем Блок - НАВИГАЦИИ и КОРЗИНУ
+    include nav.pug
+    //- Создаем ФУТЕР - в котором прописан скрипт (nav.js) -> 
+    //- который вернет [ { id: 1, category: 'Ноутбуки' }, { id: 2, category: 'Телефоны' } ] из Таблици category 
+  include footer.pug
+

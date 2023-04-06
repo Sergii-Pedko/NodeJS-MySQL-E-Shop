@@ -1,0 +1,53 @@
+//- ЗАПУСКАЕТСЯ ИЗ pug_test.js - стр. 110 -139 (PUG - МЕНЮ)
+
+doctype html
+html <!-- html - Tub (ПРОБЕЛ) head;  ОЧЕНЬ ОСТОРОЖНО С ЛИШНИМИ ПРОБЕЛАМИ -->
+    head
+        meta(charset='utf-8')
+        meta(
+            name='viewport'
+            content='width=device-width, initial-scale=1.0'
+        )
+        link(
+            rel='stylesheet'
+            href='css/test_menu.css' 
+        )
+        title PUG - include МЕНЮ
+    body.main <!-- стр. 1- 14 синтаксис html.разметки - cм. index_test.html  --> 
+
+        div см. Онлайн КОНВЕРТЕР HTML to PUG: https://qna.habr.com/q/494010
+
+        h1.h1 Операторы ВЕТВЛЕНИЯ (if) и ИНКЛЮДЫ (include)  - верстаем МЕНЮ сайта (CSS, JS)  <!--(Делаем МЕНЮ в файле test_index.pug - в который ПОДКЛЮЧАЕМ test_menu.pug; test_menu.css; test_menu.js)   -->  
+
+<!-- ПОДКЛЮЧАЕМ НАПИСАННОЕ МЕНЮ  - в файле: test_menu.pug; СИНТАКСИС (include test_menu.pug) - ТОЖЕ РАБОТАЕТ, все ф-лы в ОДНОЙ ПАПКЕ views    --> 
+        include ./test_menu.pug   
+
+<!-- ПОДКЛЮЧАЕМ CКРИПТЫ - Прописанные файле: test_menu.js;  --> 
+        script(src="js/test_menu.js")   
+
+        hr
+
+<!-- Напишем 16 квадратиков при помощи цикла -for() и Метода case-when [это аналог Метода if() -> Метод switch-case;           см. JS.html стр. 844-861] -->
+
+        ul.number-list
+            -for(let i = 0; i<=15; i++)
+                case i 
+                    when 2
+                        li.number-list-element.mod-red #{i}
+                    when 4
+                        li.number-list-element.mod-green #{i}
+                    when 5
+                        li.number-list-element.mod-blue #{i}
+                    when 8
+                        li.number-list-element.mod-red #{i}
+                    when 10
+                        li.number-list-element.mod-green #{i}
+                    when 15
+                        li.number-list-element.mod-blue #{i}
+                    default 
+                        li.number-list-element #{i}
+
+<!-- case - это УСЛОВИЕ = i (i - меняется от 0 до 15) -->
+<!-- when 2 (когда будет совпадение case i = 2 и when 2 - элемент <li> будет иметь КРАСНЫЙ ФОН -->
+<!-- default - что делать ПО УМОЛЧАНИЮ (когда НЕТ совпадений case И when) --> 
+        hr

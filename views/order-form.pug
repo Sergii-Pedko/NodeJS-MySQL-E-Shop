@@ -1,0 +1,81 @@
+include header.pug
+
+div(class='wrap')
+  div(class='content')
+    header(class='site-header')
+      //- Без кнопки - НАВИГАЦИИ по сайту
+      include site_header_order.pug 
+
+    div(class='container')
+      div(class='row')
+        div(class='col col-md-12')
+          h3(class="cart-header") Корзина
+          div(id='cart-nav') <!--Сюда ложим содержание КОРЗИНЫ - ответ сервера на POST-запрос (app.js стр.496), сформированный в card.js-->
+        div(class='col col-md-12')
+          h3 Формирование заказа 
+        div(class='col col-md-6') 
+        
+          form#lite-shop-order(action="") 
+                  //-  тег <label> (в переводе с англ. - метка) определяет текстовую метку для элемента <input>. По своему виду метка ничем не отличается от обычного текста, однако она ПОЗВОЛЯЕТ ПОЛЬЗОВАТЕЛЮ ВЫБРАТЬ ЭЛЕМЕНТ Ф-МЫ  - КЛИКОМ ПО ТЕКСТУ, расположенному внутри элемента <label>, А НЕ ПО САМОМУ ЭЛЕМЕНТУ <input>. Чтобы определить к какому элементу формы относится текущая метка, необходимо использовать атрибут for тега <label>. Значение атрибута for должно быть эквивалентно значению атрибута id того элемента формы, к которому 
+                  //-   будет относится метка.
+
+                  //-                     т.е. for="username" (стр.30) === id="username"(стр.33)
+
+                  //-  Атрибут name="    " тега input  -используется для обращения к данным формы после их отправки на сервер, либо для обращения к элементу при помощи JavaScript.
+
+                  //-                              ОБЯЗАТЕЛЬНО ПРОПИСЫВАЕМ
+                  //-       name - имя, которое будет отправлтся на сервер ( На сервер будут отправлены только значения тех элементов, у которых определен атрибут name.)
+                  //-        value - значение, которое будет отправлятся на сервер
+                  div(class='form-control')
+                    label(for='username') Имя
+                    input(
+                        type='text',
+                        id='username',
+                        placeholder='Enter your name',
+                        )
+                  div(class='form-control')
+                    label(for='phone') Телефон
+                    input(
+                        type='text',
+                        id='phone',
+                        placeholder='+380505555555',
+                        )
+                  div(class='form-control')
+                    label(for='email') Email
+                    input(
+                        type='text',
+                        id='email',
+                        placeholder='mail@example.com',
+                        )
+                  div(class='form-control')
+                    label(for='address') Адресс
+                    textarea(
+                        id='address',
+                        placeholder='where are you',
+                        )
+                  div(class='form-control')
+                    label(for='rule') 
+                      input(
+                          type='checkbox',
+                          id='rule',
+                          value='1'
+                          ) 
+                      span  С условиями и сроками выполнения заказа ознакомлен
+                  div(class='form-control text-right')
+                    button(class='button-primary', type='submit') Купить
+    
+  //- Прописываем ФУТЕР вручную (без подключенного скрипта - Навигации : nav.js) 
+  .footer
+    .container 
+      .row
+        div(class="col col-lg-12") Lite Shop. © All rights reserved
+
+  //- Cкрипт -Подключаем Модальные окна-ПОДСКАЗКИ - https://sweetalert2.github.io/#download
+  script(src=`https://cdn.jsdelivr.net/npm/sweetalert2@11`)
+
+  //- Cкрипт - КОРЗИНА
+  script(src=`js/card.js`)
+
+  //- Cкрипт - Оформление ЗАКАЗА
+  script(src='js/order.js')
+

@@ -1,0 +1,22 @@
+//- Вывод Элементов Массива, в т.ч. Рисунков - см. help.pug стр.45-51
+
+div(class='col col-md-4')
+    div(class='card')
+        //- a(href="goods?id="+elem['id'])
+        a(href=`goods?id=${elem['id']}`)
+            //- Переход на Карточку Отдельного Товара (напр. http://localhost:3000/goods?id=1) описано app.js - стр. 330-385
+
+            //-Внутри ссылки у нас ВСЯ карточка товара - кликнув на которую мы перейдем на страницу этого(отдельного) товара 
+            h3(class='card-title text-center') #{elem['name']}
+            img(
+                src=`images/${elem['image']}`
+                class='card-images'
+            )
+            p(class='text-center') #{elem['cost'].toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ')} грн.
+                //- cтр.12 - преобразует Число в таблице goods: 6999 -> 6 199.00 
+        ul(class='card-actions')
+            li
+                button(
+                data-goods_id = elem['id']
+                class='button button-primary add-to-cart'
+                ) в Корзину

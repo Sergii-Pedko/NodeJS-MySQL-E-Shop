@@ -1,0 +1,68 @@
+doctype html
+html <!-- html - Tub (ПРОБЕЛ) head;  ОЧЕНЬ ОСТОРОЖНО С ЛИШНИМИ ПРОБЕЛАМИ -->
+    head
+        meta(charset='utf-8')
+        meta(
+            name='viewport'
+            content='width=device-width, initial-scale=1.0'
+        )
+        //- Подключаем СSS-Фреймворк - mustard
+        link(
+          rel='stylesheet'
+          href='css/mustard-ui.min.css'
+        ) 
+        //- Подключаем ИКОНКИ-fontawesome.com
+        link(
+          rel="stylesheet" 
+          href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" 
+          crossorigin="anonymous"
+        )
+        //- Подключаем style.css
+        link(
+            rel='stylesheet'
+            href='css/style.css'
+        )
+        title Тест Lite Shop
+    body
+      div(class='wrap')
+        div(class='content')
+          header(class='site-header')
+            include site_header.pug
+
+          div(class='container')
+            //- Конструкция row->col Должна быть обвернута в обвертку с классом .container
+            div(class='row')
+              div(class='col col-md-12')
+                //- Ключ myGoods - содержит Значение-Объект-goods (app.js, стр. 2016)
+
+                //- Метод ПЕРЕБОРА МАССИВОВ (ОБЪЕКТОВ) each в PUG - аналогично перебору Объектов learn_by_heart.html стр. 1484-1523 
+                      for (let key in obj) {
+                      console.log(key); 
+                      };  
+                       
+                //- и Методу перебора Массива arr.forEach((element, index)=>{});
+
+                //-  elem, index - это переменные с которыми будем работать внутри перебора Массива(Объекта)
+                each elem, index in myGoods  
+                  p #{ elem[`name`] } <!--Выводим в Цикле Названия Товара из Объекта; Обязательно Tub (пробел) - иначе ошибка: expected "indent", but got "newline" -->
+
+                      //- <!--Выводим в в Цикле РИСУНКИ Товара из Объекта 
+                  img(src=`images/${elem[`image`]}`
+                      class=`card-images`
+                  )
+
+          //-  Синтаксис с конкатенацией: src=`images/`+ elem[`image`] 
+
+          //- 1) images - это ПАПКА, где лежат картинки; 2) Названия картинок в этой папке - ТОЧНО ИДЕНТИЧНО НАЗВАНИЯМ в СТОЛБЦЕ image Таблици goods в БД lite_shop MySQL
+
+          //- 3) class=`card-images` - добавляем class тегу <img> - см. style.css
+
+          //- div #{elem} выдаст [object Object]
+          //- ________________________________________________________________________________________________________
+                      
+          //- Cоздаем Блок - НАВИГАЦИИ
+          include nav.pug
+          //- Создаем ФУТЕР - в котором прописан скрипт (nav.js) -> 
+          //- который вернет [ { id: 1, category: 'Ноутбуки' }, { id: 2, category: 'Телефоны' } ] из Таблици category 
+        include footer.pug
